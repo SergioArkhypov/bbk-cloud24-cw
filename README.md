@@ -29,10 +29,9 @@ Post fields:
 * usertype: str (Authorised / Registered)
 
 
-## Interaction
-* IntId: int
-* IntValue: Like, Dislike, Comment
-* Actor: (UserName)
-* PostTytle: str
-* PostTopic: list str (Politics, Health, Sport or Tech. Could have multiple)
-* TimeToExpiration: float
+## Action
+* type: Like, Dislike, Comment
+* user: str (username)
+* posttitle: str
+* posttopic: list str (Politics, Health, Sport or Tech. Could have multiple)
+* timeexpire: float
