@@ -7,19 +7,19 @@ Bbk cloud computing coursework for 2024
 
 ## Post
 Post fields: 
-* PostId: int
-* PostTytle: str
-* PostTopic: list str (Politics, Health, Sport or Tech. Could have multiple)
-* Timestamp: datetime
-* Message: string
-* ExpirationTime: float
-* Owner: str (UserName)
-* NumLikes: int
-* NumDislikes: int
-* Comments: list str
+* postid: int
+* tytle: str
+* topic: list str (Politics, Health, Sport or Tech. Could have multiple)
+* timestamp: datetime
+* message: string
+* expiration: float
+* user: str (username)
 
     Methods: 
     * GetStatus: Live or Expired
+    * GetLikes: int
+    * GetDislikes: int
+    * GetComments: list str
 
 ## User
 * userid: int
