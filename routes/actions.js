@@ -5,6 +5,7 @@ const Post = require('../models/Post')
 const Action = require('../models/Action')
 const verifyToken = require('../verifyToken')
 
+
 // get all data
 router.get('/', verifyToken, async(req, res) => {
     try{
@@ -43,14 +44,12 @@ router.get('/:allbytopic', verifyToken, async(req, res) => {
 })
 
 
-// get top board
+// get top board by topic
 router.get('/top/:allbytopic', verifyToken, async(req, res) => {
     try{
         const query  = { posttopic: req.params.allbytopic}
-        console.log(query)
         
         const getActions = await Action.find(query)
-        console.log(getActions)
         
         const test = getActions.reduce((acc, {posttitle, type, comment, user}) =>
         {
@@ -63,8 +62,32 @@ router.get('/top/:allbytopic', verifyToken, async(req, res) => {
             return acc;
         }, {})
 
-        //res.send(test.sort((a, b) => b.TotalInterest - a.TotalInterest))
         res.send(Object.values(test).sort((a, b) => b.TotalInterest - a.TotalInterest)[0])
+    }catch(err){
+        res.send({message:err})
+    }
+})
+
+
+// get expired by topic
+router.get('/expired/:allbytopic', verifyToken, async(req, res) => {
+    try{
+        const query  = { topic: req.params.allbytopic}
+        const getPosts = await Post.find(query)
+        console.log(getPosts)
+        
+        const test = Object.values(getPosts).filter(function (el) {
+            const t1 = el.timestamp.getTime()
+            console.log(t1)
+            const t2 = Date.now() - el.expiration*1000*60
+            console.log(t2)
+            return t1 < t2;
+          })
+        //(timestamp <  Date.now() + expiration*1000*60) 
+
+        console.log(test)
+
+        res.send(test)
     }catch(err){
         res.send({message:err})
     }

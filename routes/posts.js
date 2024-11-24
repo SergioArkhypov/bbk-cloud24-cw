@@ -14,6 +14,18 @@ router.get('/', verifyToken, async(req, res) => {
     }
 })
 
+// get all data by topic
+router.get('/:allbytopic', verifyToken, async(req, res) => {
+    try{
+        const query  = { topic: req.params.allbytopic}
+
+        const getPosts = await Post.find(query)
+        res.send(getPosts)
+    }catch(err){
+        res.send({message:err})
+    }
+})
+
 // get one record
 router.get('/:postId', verifyToken, async(req, res) => {
     try{
