@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bbk-cw-deployment
+  labels:
+    app: bbk24cw 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bbk24cw
+  template:
+    metadata:
+      labels:
+        app: bbk24cw
+    spec:
+      containers:
+      - name: bbk24cw
+        image: sarkhypov/bbk-cloud24-cw:1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000

@@ -4,7 +4,7 @@
   "description": "Bbk cloud computing coursework for 2024",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
