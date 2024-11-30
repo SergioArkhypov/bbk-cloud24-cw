@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: bbk24cw
-        image: sarkhypov/bbk-cloud24-cw:1
+        image: sarkhypov/bbk-cloud24-cw:3
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
