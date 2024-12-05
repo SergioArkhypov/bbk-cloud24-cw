@@ -5,7 +5,7 @@ metadata:
   labels:
     app: bbk24cw 
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       app: bbk24cw

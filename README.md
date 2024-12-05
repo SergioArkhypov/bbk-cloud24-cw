@@ -15,19 +15,12 @@ Post fields:
 * expiration: float
 * user: str (username)
 
-    Methods: 
-    * GetStatus: Live or Expired
-    * GetLikes: int
-    * GetDislikes: int
-    * GetComments: list str
-
 ## User
 * userid: int
 * username: str (unique)
 * email
 * password: str
 * usertype: str (Authorised / Registered)
-
 
 ## Action
 * type: Like, Dislike, Comment

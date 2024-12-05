@@ -1,0 +1,123 @@
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.15.0-1070-gcp x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Fri Nov 29 20:31:31 UTC 2024
+
+  System load:  0.37               Processes:             115
+  Usage of /:   30.2% of 14.36GB   Users logged in:       0
+  Memory usage: 7%                 IPv4 address for ens4: 10.128.0.2
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+25 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sat Nov  9 10:19:13 2024 from 35.235.244.34
+sarkhypov@cloud-vm:~$ docker login -u sarkhypov
+Password: 
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/auth": dial unix /var/run/docker.sock: connect: permission denied
+sarkhypov@cloud-vm:~$ docker login -u sarkhypov
+Password: 
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/auth": dial unix /var/run/docker.sock: connect: permission denied
+sarkhypov@cloud-vm:~$ docker login -u sarkhypov
+Password: 
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/auth": dial unix /var/run/docker.sock: connect: permission denied
+sarkhypov@cloud-vm:~$ docker login -u sarkhypov
+Password: 
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/auth": dial unix /var/run/docker.sock: connect: permission denied
+sarkhypov@cloud-vm:~$ ls
+testtest
+sarkhypov@cloud-vm:~$ docker login -u sarkhypov
+Password: 
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/auth": dial unix /var/run/docker.sock: connect: permission denied
+sarkhypov@cloud-vm:~$ su - docker-user
+Password: 
+docker-user@cloud-vm:~$ git clone --branch master https://github.com/SergioArkhypov/bbk-cloud24-cw.git
+Cloning into 'bbk-cloud24-cw'...
+fatal: Remote branch master not found in upstream origin
+docker-user@cloud-vm:~$ git clone --branch main https://github.com/SergioArkhypov/bbk-cloud24-cw.git
+Cloning into 'bbk-cloud24-cw'...
+remote: Enumerating objects: 84, done.
+remote: Counting objects: 100% (84/84), done.
+remote: Compressing objects: 100% (70/70), done.
+remote: Total 84 (delta 17), reused 74 (delta 10), pack-reused 0 (from 0)
+Unpacking objects: 100% (84/84), 6.42 MiB | 11.30 MiB/s, done.
+docker-user@cloud-vm:~$ ls
+Dockerfile  bbk-cloud24-cw  mini-hi  test.py
+docker-user@cloud-vm:~$ cd bbk-cloud24-cw
+docker-user@cloud-vm:~/bbk-cloud24-cw$ docker build -f Dockerfile . -t sergii/bbk-cloud24-cw:1
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  14.46MB
+Step 1/6 : FROM alpine
+ ---> 91ef0af61f39
+Step 2/6 : RUN apk add --update nodejs npm
+ ---> Using cache
+ ---> 9a5f911fc793
+Step 3/6 : COPY . /src
+ ---> 8bd0afa36c2a
+Step 4/6 : WORKDIR /src
+ ---> Running in 858cd76fdcfb
+Removing intermediate container 858cd76fdcfb
+ ---> 6d7b6a9acdc8
+Step 5/6 : EXPOSE 3000
+ ---> Running in 69912ff72523
+Removing intermediate container 69912ff72523
+ ---> bed20f7fd9c6
+Step 6/6 : ENTRYPOINT ["node", "./app.js"]
+ ---> Running in 51d96b85f336
+Removing intermediate container 51d96b85f336
+ ---> d4021cdeb179
+Successfully built d4021cdeb179
+Successfully tagged sergii/bbk-cloud24-cw:1
+docker-user@cloud-vm:~/bbk-cloud24-cw$ docker image ls
+REPOSITORY              TAG       IMAGE ID       CREATED          SIZE
+sergii/bbk-cloud24-cw   1         d4021cdeb179   33 seconds ago   87.4MB
+sarkhypov/bbk-cloud     1         f35bcfc8ca49   3 weeks ago      75.5MB
+sergii/mini-hi          1         f35bcfc8ca49   3 weeks ago      75.5MB
+mini-test-app-image     1         f35bcfc8ca49   3 weeks ago      75.5MB
+mini-python3-image      latest    893ac4adeca6   3 weeks ago      267MB
+python                  latest    a4cb00e84832   5 weeks ago      1.02GB
+ubuntu                  latest    59ab366372d5   7 weeks ago      78.1MB
+alpine                  latest    91ef0af61f39   2 months ago     7.8MB
+hello-world             latest    d2c94e258dcb   19 months ago    13.3kB
+docker-user@cloud-vm:~/bbk-cloud24-cw$ ^C
+docker-user@cloud-vm:~/bbk-cloud24-cw$ docker tag sergii/bbk-cloud24-cw:1 sarkhypov/bbk-cloud24-cw:1
+docker-user@cloud-vm:~/bbk-cloud24-cw$ docker image ls
+REPOSITORY                 TAG       IMAGE ID       CREATED         SIZE
+sarkhypov/bbk-cloud24-cw   1         d4021cdeb179   3 minutes ago   87.4MB
+sergii/bbk-cloud24-cw      1         d4021cdeb179   3 minutes ago   87.4MB
+mini-test-app-image        1         f35bcfc8ca49   3 weeks ago     75.5MB
+sarkhypov/bbk-cloud        1         f35bcfc8ca49   3 weeks ago     75.5MB
+sergii/mini-hi             1         f35bcfc8ca49   3 weeks ago     75.5MB
+mini-python3-image         latest    893ac4adeca6   3 weeks ago     267MB
+python                     latest    a4cb00e84832   5 weeks ago     1.02GB
+ubuntu                     latest    59ab366372d5   7 weeks ago     78.1MB
+alpine                     latest    91ef0af61f39   2 months ago    7.8MB
+hello-world                latest    d2c94e258dcb   19 months ago   13.3kB
+docker-user@cloud-vm:~/bbk-cloud24-cw$ docker push sarkhypov/bbk-cloud24-cw:1
+The push refers to repository [docker.io/sarkhypov/bbk-cloud24-cw]
+27607fcf9b06: Pushed 
+8aabeb96fbbe: Mounted from sarkhypov/bbk-cloud 
+63ca1fbb43ae: Mounted from sarkhypov/bbk-cloud 
+1: digest: sha256:a8b7584643eb8131bec7cfae78d79fc1790aadd7026702cf84488c5dfbd9c936 size: 952
+docker-user@cloud-vm:~/bbk-cloud24-cw$ ^C
+docker-user@cloud-vm:~/bbk-cloud24-cw$ 
